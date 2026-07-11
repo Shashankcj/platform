@@ -1,0 +1,21 @@
+controller:
+  replicas: 2
+
+speaker:
+  enabled: true
+
+crds:
+  enabled: true
+
+prometheus:
+  serviceMonitor:
+    enabled: true
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+  limits:
+    cpu: 250m
+    memory: 256Mi

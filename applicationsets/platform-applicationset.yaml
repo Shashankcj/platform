@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: workload-platform
+  namespace: argocd
+spec:
+  generators:
+    - clusters: {}
+
+  template:
+    metadata:
+      name: '{{name}}-platform'
+
+    spec:
+      project: default
+
+      source:
+        repoURL: https://github.com/Shashankcj/platform.git
+        targetRevision: main
+        path: platform
+
+      destination:
+        server: '{{server}}'
+        namespace: argocd
+
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - metrics-server/application.yaml
+  - metallb/application.yaml
+  - ingress-nginx/application.yaml
+  - cert-manager/application.yaml
+  - kube-prometheus-stack/application.yaml
+  - keda/application.yaml

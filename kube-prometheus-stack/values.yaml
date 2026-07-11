@@ -1,0 +1,68 @@
+grafana:
+  enabled: true
+
+  replicas: 1
+
+  adminPassword: admin123
+
+  service:
+    type: LoadBalancer
+
+  persistence:
+    enabled: true
+    size: 10Gi
+
+prometheus:
+  service:
+    type: LoadBalancer
+
+  prometheusSpec:
+    replicas: 1
+
+    retention: 15d
+
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+
+          resources:
+            requests:
+              storage: 30Gi
+
+alertmanager:
+  enabled: true
+
+  service:
+    type: LoadBalancer
+
+  alertmanagerSpec:
+    replicas: 1
+
+kubeStateMetrics:
+  enabled: true
+
+nodeExporter:
+  enabled: true
+
+prometheusOperator:
+  enabled: true
+
+defaultRules:
+  create: true
+
+coreDns:
+  enabled: true
+
+kubeControllerManager:
+  enabled: true
+
+kubeScheduler:
+  enabled: true
+
+kubeProxy:
+  enabled: true
+
+kubeEtcd:
+  enabled: true

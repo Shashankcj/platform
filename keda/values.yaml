@@ -1,0 +1,48 @@
+crds:
+  install: true
+
+operator:
+  replicaCount: 2
+
+resources:
+  operator:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 300m
+      memory: 256Mi
+
+  metricServer:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 300m
+      memory: 256Mi
+
+  webhooks:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 128Mi
+
+metricsServer:
+  enabled: true
+
+webhooks:
+  enabled: true
+
+prometheus:
+  metricServer:
+    enabled: true
+
+serviceMonitor:
+  enabled: true
+
+podDisruptionBudget:
+  operator:
+    create: true
+    minAvailable: 1
