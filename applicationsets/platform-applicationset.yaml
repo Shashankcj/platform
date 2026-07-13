@@ -63,6 +63,9 @@ spec:
         repoURL: '{{repoURL}}'
         chart: '{{chart}}'
         targetRevision: '{{version}}'
+        helm:
+          values: |
+            {{values}}
 
 
       destination:
