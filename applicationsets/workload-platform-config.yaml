@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: workload-platform-config
+  namespace: argocd
+
+spec:
+  generators:
+    - matrix:
+        generators:
+          - clusters:
+              selector:
+                matchLabels:
+                  cluster-type: workload
+
+          - list:
+              elements:
+                - component: metallb-config
+                  path: platform/metallb-config
+                  namespace: metallb-system
+
+  template:
+    metadata:
+      name: '{{nameNormalized}}-{{component}}'
+
+    spec:
+      project: default
+
+      source:
+        repoURL: https://github.com/Shashankcj/platform.git
+        targetRevision: main
+        path: '{{path}}'
+
+      destination:
+        server: '{{server}}'
+        namespace: '{{namespace}}'
+
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true

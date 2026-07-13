@@ -27,6 +27,7 @@ spec:
               version: 0.15.2
               namespace: metallb-system
               valuesFiles: platform/metallb/values.yaml
+             
 
             - component: ingress-nginx
               repoURL: https://kubernetes.github.io/ingress-nginx
