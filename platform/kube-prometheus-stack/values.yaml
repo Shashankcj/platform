@@ -1,6 +1,5 @@
 grafana:
   enabled: true
-
   replicas: 1
 
   adminPassword: admin123
@@ -10,6 +9,9 @@ grafana:
 
   persistence:
     enabled: true
+    storageClassName: local-path
+    accessModes:
+      - ReadWriteOnce
     size: 10Gi
 
 prometheus:
@@ -18,15 +20,14 @@ prometheus:
 
   prometheusSpec:
     replicas: 1
-
     retention: 15d
 
     storageSpec:
       volumeClaimTemplate:
         spec:
+          storageClassName: local-path
           accessModes:
             - ReadWriteOnce
-
           resources:
             requests:
               storage: 30Gi
@@ -39,6 +40,16 @@ alertmanager:
 
   alertmanagerSpec:
     replicas: 1
+
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: local-path
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 5Gi
 
 kubeStateMetrics:
   enabled: true

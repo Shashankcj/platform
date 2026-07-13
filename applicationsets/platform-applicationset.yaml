@@ -27,6 +27,14 @@ spec:
               version: 0.15.2
               namespace: metallb-system
               valuesFiles: platform/metallb/values.yaml
+
+            - component: local-path-provisioner
+              repoURL: https://containeroo.github.io/helm-charts
+              chart: local-path-provisioner
+              version: 0.0.35
+              namespace: local-path-storage
+              valuesFiles: platform/local-path-storage/values.yaml
+
              
 
             - component: ingress-nginx
@@ -57,13 +65,7 @@ spec:
               namespace: monitoring
               valuesFiles: platform/kube-prometheus-stack/values.yaml
 
-            - component: local-path-provisioner
-              repoURL: https://containeroo.github.io/helm-charts
-              chart: local-path-provisioner
-              version: 0.0.35
-              namespace: local-path-storage
-              valuesFiles: platform/local-path-storage/values.yaml
-
+            
 
 
 
