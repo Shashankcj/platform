@@ -6,8 +6,7 @@ replicaCount: 2
 prometheus:
   enabled: true
 
-serviceMonitor:
-  enabled: true
+
 
 resources:
   requests:
