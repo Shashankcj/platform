@@ -62,7 +62,7 @@ spec:
               chart: local-path-provisioner
               version: 0.0.35
               namespace: local-path-storage
-              valuesFiles: platform/local-path-provisioner/values.yaml
+              valuesFiles: platform/local-path-storage/values.yaml
 
 
 
