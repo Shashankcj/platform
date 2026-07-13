@@ -9,7 +9,7 @@ crds:
 
 prometheus:
   serviceMonitor:
-    enabled: true
+    enabled: false
 
 resources:
   requests:
