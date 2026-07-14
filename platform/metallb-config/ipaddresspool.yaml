@@ -1,8 +1,8 @@
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
-  name: production-pool
+  name: workload-pool
   namespace: metallb-system
 spec:
   addresses:
-  - 10.99.1.231-10.99.1.240
+  - 10.99.1.241-10.99.1.250
