@@ -93,6 +93,14 @@ spec:
         server: '{{server}}'
         namespace: '{{namespace}}'
 
+      ignoreDifferences:
+      - group: apps
+        kind: Deployment
+        name: '{{nameNormalized}}-local-path-provisioner'
+        namespace: local-path-storage
+        jsonPointers:
+          - /spec/template/spec/hostUsers
+
       syncPolicy:
         automated:
           prune: true
