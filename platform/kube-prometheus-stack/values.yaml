@@ -4,6 +4,11 @@ grafana:
 
   adminPassword: admin123
 
+  grafana.ini:
+    server:
+      root_url: "%(protocol)s://%(domain)s/grafana"
+      serve_from_sub_path: true
+
   service:
     type: ClusterIP
 
@@ -31,15 +36,14 @@ prometheus:
   ingress:
     enabled: true
     ingressClassName: nginx
-
-
     hosts:
-      ""
-
+      - ""
     paths:
       - /prometheus
 
   prometheusSpec:
+    externalUrl: /prometheus
+    routePrefix: /
     replicas: 1
     retention: 15d
 
@@ -53,6 +57,7 @@ prometheus:
             requests:
               storage: 30Gi
 
+
 alertmanager:
   enabled: true
 
@@ -62,15 +67,14 @@ alertmanager:
   ingress:
     enabled: true
     ingressClassName: nginx
-
-
     hosts:
-      ""
-
+      - ""
     paths:
       - /alertmanager
 
   alertmanagerSpec:
+    externalUrl: /alertmanager
+    routePrefix: /
     replicas: 1
 
     storage:
@@ -81,4 +85,4 @@ alertmanager:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 5Gi              
+              storage: 5Gi
