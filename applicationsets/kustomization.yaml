@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - platform-applicationset.yaml
   - workload-platform-config.yaml
-  - app-applicationset.yaml
+  - app-applicationset.yaml 
