@@ -1,0 +1,25 @@
+provider:
+  name: rfc2136
+
+sources:
+  - ingress
+
+policy: sync
+
+registry: txt
+
+txtOwnerId: workload-cluster
+
+domainFilters:
+  - home.local
+
+serviceAccount:
+  create: true
+
+extraArgs:
+  - --rfc2136-host=10.99.1.170
+  - --rfc2136-port=53
+  - --rfc2136-zone=home.local
+  - --rfc2136-tsig-keyname=externaldns
+  - --rfc2136-tsig-secret=C6GnsIdsLJcrWIDZm9UoWjRo4Iu+q83/JvS47kOpUJ4=
+  - --rfc2136-tsig-secret-alg=hmac-sha256

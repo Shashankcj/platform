@@ -5,7 +5,19 @@ grafana:
   adminPassword: admin123
 
   service:
-    type: LoadBalancer
+    type: ClusterIP
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: grafana.home.local
+
+    hosts:
+      - grafana.home.local
+
+    path: /
 
   persistence:
     enabled: true
@@ -16,7 +28,20 @@ grafana:
 
 prometheus:
   service:
-    type: LoadBalancer
+    type: ClusterIP
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: prometheus.home.local
+
+    hosts:
+      - prometheus.home.local
+
+    paths:
+      - /
 
   prometheusSpec:
     replicas: 1
@@ -36,7 +61,20 @@ alertmanager:
   enabled: true
 
   service:
-    type: LoadBalancer
+    type: ClusterIP
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: alertmanager.home.local
+
+    hosts:
+      - alertmanager.home.local
+
+    paths:
+      - /
 
   alertmanagerSpec:
     replicas: 1
@@ -49,31 +87,4 @@ alertmanager:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 5Gi
-
-kubeStateMetrics:
-  enabled: true
-
-nodeExporter:
-  enabled: true
-
-prometheusOperator:
-  enabled: true
-
-defaultRules:
-  create: true
-
-coreDns:
-  enabled: true
-
-kubeControllerManager:
-  enabled: true
-
-kubeScheduler:
-  enabled: true
-
-kubeProxy:
-  enabled: true
-
-kubeEtcd:
-  enabled: true
+              storage: 5Gi              
