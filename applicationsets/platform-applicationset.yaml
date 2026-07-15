@@ -35,12 +35,12 @@ spec:
               namespace: local-path-storage
               valuesFiles: platform/local-path-storage/values.yaml
 
-            - component: external-dns
-              repoURL: https://kubernetes-sigs.github.io/external-dns
-              chart: external-dns
-              version: 1.18.0
-              namespace: external-dns
-              valuesFiles: platform/external-dns/values.yaml
+            # - component: external-dns
+            #   repoURL: https://kubernetes-sigs.github.io/external-dns
+            #   chart: external-dns
+            #   version: 1.18.0
+            #   namespace: external-dns
+            #   valuesFiles: platform/external-dns/values.yaml
 
              
 
@@ -80,6 +80,8 @@ spec:
   template:
     metadata:
       name: '{{nameNormalized}}-{{component}}'
+      annotations:
+        argocd.argoproj.io/sync-wave: "0"
 
     spec:
       project: default

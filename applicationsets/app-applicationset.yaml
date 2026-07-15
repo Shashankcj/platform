@@ -15,23 +15,21 @@ spec:
 
           - list:
               elements:
-                - component: metallb-config
-                  path: platform/metallb-config
-                  namespace: metallb-system
+                - component: webapp
+                  namespace: webapp
 
   template:
     metadata:
       name: '{{nameNormalized}}-{{component}}'
       annotations:
-        argocd.argoproj.io/sync-wave: "1"
+        argocd.argoproj.io/sync-wave: "2"
 
     spec:
       project: default
 
       source:
-        repoURL: https://github.com/Shashankcj/platform.git
+        repoURL: https://github.com/Shashankcj/fullstact_project_gitops
         targetRevision: main
-        path: '{{path}}'
 
       destination:
         server: '{{server}}'
