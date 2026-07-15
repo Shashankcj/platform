@@ -11,13 +11,11 @@ grafana:
     enabled: true
     ingressClassName: nginx
 
-    annotations:
-      external-dns.alpha.kubernetes.io/hostname: grafana.home.local
 
     hosts:
-      - grafana.home.local
+      - ""
 
-    path: /
+    path: /grafana
 
   persistence:
     enabled: true
@@ -34,14 +32,12 @@ prometheus:
     enabled: true
     ingressClassName: nginx
 
-    annotations:
-      external-dns.alpha.kubernetes.io/hostname: prometheus.home.local
 
     hosts:
-      - prometheus.home.local
+      ""
 
     paths:
-      - /
+      - /prometheus
 
   prometheusSpec:
     replicas: 1
@@ -67,14 +63,12 @@ alertmanager:
     enabled: true
     ingressClassName: nginx
 
-    annotations:
-      external-dns.alpha.kubernetes.io/hostname: alertmanager.home.local
 
     hosts:
-      - alertmanager.home.local
+      ""
 
     paths:
-      - /
+      - /alertmanager
 
   alertmanagerSpec:
     replicas: 1
