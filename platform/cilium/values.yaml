@@ -1,6 +1,4 @@
-cluster:
-  name: '{{ metadata.labels.cilium-cluster-name }}'
-  id: {{ metadata.labels.cilium-cluster-id }}
+
 
 hubble:
   relay:
