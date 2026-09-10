@@ -145,10 +145,10 @@ spec:
                 config:
                   enabled: true
                   clusters:
-                    cluster-1:
+                    - name: cluster-1
                       address: 10.99.1.244
                       port: 2379
-                    cluster-2:
+                    - name: cluster-2
                       address: 10.99.1.245
                       port: 2379
               {{- end }}
