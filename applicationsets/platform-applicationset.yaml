@@ -140,11 +140,17 @@ spec:
                 apiserver:
                   service:
                     type: LoadBalancer
-                    loadBalancerIP: {{- if eq (index .metadata.labels "cilium-cluster-id") "1" }}
-                      10.99.1.244
-                    {{- else }}
-                      10.99.1.245
-                    {{- end }}
+                    loadBalancerIP: {{ if eq (index .metadata.labels "cilium-cluster-id") "1" }}10.99.1.244{{ else }}10.99.1.245{{ end }}
+
+                config:
+                  enabled: true
+                  clusters:
+                    cluster-1:
+                      address: 10.99.1.244
+                      port: 2379
+                    cluster-2:
+                      address: 10.99.1.245
+                      port: 2379
               {{- end }}
 
         - repoURL: https://github.com/Shashankcj/platform.git
