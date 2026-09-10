@@ -1,4 +1,5 @@
-
+ipam:
+  mode: kubernetes
 
 hubble:
   relay:
