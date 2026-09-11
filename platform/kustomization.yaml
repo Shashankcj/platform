@@ -8,3 +8,4 @@ resources:
   - cert-manager/application.yaml
   - kube-prometheus-stack/application.yaml
   - keda/application.yaml
+  - external-secrets/application.yaml
