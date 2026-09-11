@@ -22,6 +22,10 @@ spec:
                 - component: external-secrets
                   path: platform/external-secrets
                   namespace: external-secrets
+
+                - component: cert-manager-config
+                  path: platform/cert-manager-config
+                  namespace: cert-manager
   template:
     metadata:
       name: '{{nameNormalized}}-{{component}}'

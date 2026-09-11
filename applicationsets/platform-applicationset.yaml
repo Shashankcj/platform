@@ -173,13 +173,7 @@ spec:
         - repoURL: https://github.com/Shashankcj/platform.git
           targetRevision: main
           ref: values
-
-        {{- if eq .component "cert-manager" }}
-        - repoURL: https://github.com/Shashankcj/platform.git
-          targetRevision: main
-          path: platform/cert-manager-config
-        {{- end }}
-
+          
       destination:
         server: '{{.server}}'
         namespace: '{{.namespace}}'
