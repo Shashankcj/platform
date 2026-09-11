@@ -1,0 +1,4 @@
+vault:
+  server: "https://10.99.1.233:8200"
+  authMount: ""
+  role: "external-secrets"
