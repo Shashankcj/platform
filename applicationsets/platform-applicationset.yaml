@@ -15,12 +15,19 @@ spec:
             - key: component
               operator: In
               values:
+                - cert-manager
+
+        - matchExpressions:
+            - key: component
+              operator: In
+              values:
                 - cilium
 
         - matchExpressions:
             - key: component
               operator: NotIn
               values:
+                - cert-manager
                 - cilium
   generators:
   - matrix:
@@ -151,7 +158,7 @@ spec:
                         group: cert-manager.io
                         kind: ClusterIssuer
                         name: clustermesh-ca
-                        
+
                 config:
                   enabled: true
                   clusters:
@@ -167,6 +174,11 @@ spec:
           targetRevision: main
           ref: values
 
+        {{- if eq .component "cert-manager" }}
+        - repoURL: https://github.com/Shashankcj/platform.git
+          targetRevision: main
+          path: platform/cert-manager-config
+        {{- end }}
 
       destination:
         server: '{{.server}}'
