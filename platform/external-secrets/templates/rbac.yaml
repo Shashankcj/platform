@@ -8,5 +8,5 @@ roleRef:
   name: system:auth-delegator
 subjects:
   - kind: ServiceAccount
-    name: vault
-    namespace: vault
+    name: external-secrets
+    namespace: external-secrets
