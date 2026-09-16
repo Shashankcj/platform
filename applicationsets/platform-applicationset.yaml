@@ -27,8 +27,8 @@ spec:
             - key: component
               operator: NotIn
               values:
-                - cert-manager
                 - cilium
+                - cert-manager
   generators:
   - matrix:
       generators:
@@ -143,36 +143,7 @@ spec:
                 name: {{ index .metadata.labels "cilium-cluster-name" | quote }}
                 id: {{ index .metadata.labels "cilium-cluster-id" | int }}
 
-              clustermesh:
-                apiserver:
-                  service:
-                    type: LoadBalancer
-                    loadBalancerIP: {{ if eq (index .metadata.labels "cilium-cluster-id") "1" }}10.99.1.244{{ else }}10.99.1.245{{ end }}
-
-                  tls:
-                    auto:
-                      enabled: true
-                      method: certmanager
-                      certValidityDuration: 365
-                      certManagerIssuerRef:
-                        group: cert-manager.io
-                        kind: ClusterIssuer
-                        name: clustermesh-ca
-
-                config:
-                  enabled: true
-                  clusters:
-                    {{- if eq (index .metadata.labels "cilium-cluster-id") "1" }}
-                    - name: cluster-2
-                      address: 10.99.1.245
-                      port: 2379
-                    {{- else }}
-                    - name: cluster-1
-                      address: 10.99.1.244
-                      port: 2379
-    
               {{- end }}
-
         - repoURL: https://github.com/Shashankcj/platform.git
           targetRevision: main
           ref: values
