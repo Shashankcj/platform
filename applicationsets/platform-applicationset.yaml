@@ -143,6 +143,25 @@ spec:
                 name: {{ index .metadata.labels "cilium-cluster-name" | quote }}
                 id: {{ index .metadata.labels "cilium-cluster-id" | int }}
 
+              clustermesh:
+                apiserver:
+                  service:
+                    type: LoadBalancer
+                    loadBalancerIP: {{- if eq (index .metadata.labels "cilium-cluster-id") "1" }}
+                      10.99.1.244
+                    {{- else }}
+                      10.99.1.245
+                    {{- end }}
+                  tls:
+                    auto:
+                      enabled: true
+                      method: certmanager
+                      certManagerIssuerRef:
+                        group: cert-manager.io
+                        kind: ClusterIssuer
+                        name: clustermesh-ca
+                              
+
               {{- end }}
         - repoURL: https://github.com/Shashankcj/platform.git
           targetRevision: main

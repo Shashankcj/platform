@@ -5,5 +5,4 @@ resources:
   - platform-applicationset.yaml
   - workload-platform-config.yaml
   - external-secrets.yaml
-  - clustermesh-api.yaml
   - app-applicationset.yaml 
