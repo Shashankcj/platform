@@ -146,6 +146,7 @@ spec:
               clustermesh:
                 useAPIServer: true
                 enableEndpointSliceSynchronization: true
+                enableMCSAPISupport: true
                 config:
                   enabled: true
                   clusters:
