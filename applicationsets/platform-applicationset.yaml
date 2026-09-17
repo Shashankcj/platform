@@ -152,15 +152,7 @@ spec:
                     {{- else }}
                       10.99.1.245
                     {{- end }}
-                  tls:
-                    auto:
-                      enabled: true
-                      method: certmanager
-                      certManagerIssuerRef:
-                        group: cert-manager.io
-                        kind: ClusterIssuer
-                        name: clustermesh-ca
-                              
+                  
 
               {{- end }}
         - repoURL: https://github.com/Shashankcj/platform.git
