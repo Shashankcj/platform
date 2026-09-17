@@ -147,6 +147,8 @@ spec:
                 useAPIServer: true
                 enableEndpointSliceSynchronization: true
                 enableMCSAPISupport: true
+                mcsApi:
+                  installCRDs: true
                 config:
                   enabled: true
                   clusters:
