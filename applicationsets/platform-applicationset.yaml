@@ -148,7 +148,7 @@ spec:
                 config:
                   enabled: true
                   clusters:
-                    - name: cluster-1S
+                    - name: cluster-1
                       ips:
                         - 10.99.1.244
                       port: 2379
