@@ -1,0 +1,5 @@
+apiVersion: v2
+name: clustermesh-api
+description: Cilium ClusterMesh API TLS configuration
+type: application
+version: 1.0.0

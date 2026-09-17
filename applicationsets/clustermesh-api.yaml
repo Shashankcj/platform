@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: clustermesh-api
+  namespace: argocd
+
+spec:
+  goTemplate: true
+
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            cluster-type: workload
+
+  template:
+    metadata:
+      name: '{{.name}}-clustermesh-api'
+
+    spec:
+      project: default
+
+      source:
+        repoURL: https://github.com/Shashankcj/platform.git
+        targetRevision: main
+        path: platform/clustermesh-api
+
+        helm:
+          parameters:
+            - name: clustermesh.loadBalancerIP
+              value: '{{ if eq (index .metadata.labels "cilium-cluster-id") "1" }}10.99.1.244{{ else }}10.99.1.245{{ end }}'
+
+      destination:
+        server: '{{.server}}'
+        namespace: kube-system
+
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+
+      syncOptions:
+        - ServerSideApply=true
