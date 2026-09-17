@@ -19,9 +19,9 @@ spec:
                   path: platform/metallb-config
                   namespace: metallb-system
 
-                - component: external-secrets
-                  path: platform/external-secrets
-                  namespace: external-secrets
+                # - component: external-secrets
+                #   path: platform/external-secrets
+                #   namespace: external-secrets
 
                 - component: cert-manager-config
                   path: platform/cert-manager-config
