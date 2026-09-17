@@ -167,9 +167,10 @@ spec:
                         group: cert-manager.io
                         kind: ClusterIssuer
                         name: clustermesh-ca
-                      server:
-                        extraIpAddresses:
-                          - {{ if eq (index .metadata.labels "cilium-cluster-id") "1" }}10.99.1.244{{ else }}10.99.1.245{{ end }}
+
+                    server:
+                      extraIpAddresses:
+                        - {{ if eq (index .metadata.labels "cilium-cluster-id") "1" }}10.99.1.244{{ else }}10.99.1.245{{ end }}
               {{- end }}
         - repoURL: https://github.com/Shashankcj/platform.git
           targetRevision: main
