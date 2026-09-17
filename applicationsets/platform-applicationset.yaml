@@ -147,19 +147,15 @@ spec:
                 useAPIServer: true
                 config:
                   enabled: true
-                  clustermesh:
-                    useAPIServer: true
-                    config:
-                      enabled: true
-                      clusters:
-                        - name: cluster-1
-                          ips:
-                            - 10.99.1.244
-                          port: 2379
-                        - name: cluster-2
-                          ips:
-                            - 10.99.1.245
-                          port: 2379
+                  clusters:
+                    - name: cluster-1S
+                      ips:
+                        - 10.99.1.244
+                      port: 2379
+                    - name: cluster-2
+                      ips:
+                        - 10.99.1.245
+                      port: 2379
                 apiserver:
                   service:
                     type: LoadBalancer
